@@ -3,13 +3,12 @@
 
 const express = require('express');
 const router = express.Router();
+const pkg = require('../../package.json');
 
 // GET /health
-// Returns a basic liveness response.
-// NOTE: the README claims this also returns the service version, but it
-// does not yet. (This is the intended starter task for a new developer.)
+// Returns a liveness response including the service version.
 router.get('/', (req, res) => {
-  res.json({ status: 'ok' });
+  res.json({ status: 'ok', version: pkg.version });
 });
 
 module.exports = router;
